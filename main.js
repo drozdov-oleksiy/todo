@@ -11,6 +11,14 @@ const update = () => {
   input.value = "";
 };
 
+const deleteTask = e => {
+  const index = e.target.parentNode.dataset.key;
+  console.log(index);
+  tasks.splice(index, 1);
+  ul.textContent = "";
+  update();
+};
+
 const addTask = e => {
   e.preventDefault();
   if (input.value === "") return;
@@ -18,6 +26,7 @@ const addTask = e => {
   li.innerHTML = input.value + " <button>usun</button>";
   tasks.push(li);
   update();
+  li.querySelector("button").addEventListener("click", deleteTask);
 };
 
 form.addEventListener("submit", addTask);
