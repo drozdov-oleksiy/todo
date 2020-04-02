@@ -1,9 +1,12 @@
 const form = document.querySelector("form.addElement");
 const input = document.querySelector(".addElement input");
 const ul = document.querySelector("ul.container");
+const amountTask = document.querySelector("h2 span");
+const inputSearch = document.getElementById("search");
 const tasks = [];
 
 const update = () => {
+  amountTask.textContent = tasks.length;
   tasks.forEach((task, i) => {
     task.dataset.key = i;
     ul.appendChild(task);
@@ -29,4 +32,9 @@ const addTask = e => {
   li.querySelector("button").addEventListener("click", deleteTask);
 };
 
+const searchTask = e => {
+  const elementSearch = e.target.value;
+};
+
+inputSearch.addEventListener("input", searchTask);
 form.addEventListener("submit", addTask);
